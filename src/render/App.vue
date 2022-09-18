@@ -52,7 +52,7 @@ body {
   background-color: rgba(gray, 0.05);
   display: flex;
   flex-flow: column nowrap;
-  flex-basis: 8rem;
+  flex-basis: 12.8rem;
 
   .usericon {
     height: 8rem;
@@ -72,8 +72,8 @@ body {
     flex-flow: column nowrap;
 
     .menumodel {
-      max-height: 8rem;
-      min-height: 8rem;
+      max-height: 6.4rem;
+      min-height: 6.4rem;
       max-width: 100%;
 
       // background-color: aqua;
@@ -115,10 +115,12 @@ body {
 @keyframes modelhover {
   0% {
     transform: scale(1) translate(0,0);
+    background-color: aqua;
   }
 
   100% {
     transform: scale(2.3) translate(-25%,-25%);
+    background-color: aqua;
   }
 }
 </style>
