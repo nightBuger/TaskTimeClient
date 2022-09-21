@@ -6,9 +6,12 @@
           <img src="@/render/assets/user.jpg">
         </div>
         <div class="menubar">
-          
-          <menumodel v-for="model in modules" :key="model.name" :imgpath="model.imgpath"></menumodel>
-
+          <ul>
+            <li v-for="(mod,index) in modules" :key="index" class="menumodel">
+              <img :src=mod.imgpath>
+              <p>{{ mod.name }}</p>
+            </li>
+          </ul>
         </div>
       </div>
       <div class="views">
@@ -73,6 +76,8 @@ body {
       max-height: 6.4rem;
       min-height: 6.4rem;
       max-width: 100%;
+      display: flex;
+      flex-flow: column nowrap;
 
       // background-color: aqua;
       img {
@@ -110,21 +115,9 @@ body {
   flex-basis: 16rem;
 }
 
-@keyframes modelhover {
-  0% {
-    transform: scale(1) translate(0, 0);
-    background-color: aqua;
-  }
-
-  100% {
-    transform: scale(2.3) translate(-25%, -25%);
-    background-color: aqua;
-  }
-}
 </style>
 
 <script>
-import menumodel from './compoents/menumodel.vue';
 
 export default {
   data() {
@@ -132,33 +125,33 @@ export default {
       modules: [
         {
           name: "用户管理",
-          imgpath:"./src/render/assets/navi-icon/用户管理.svg"
+          imgpath:require("@/render/assets/navi-icon/用户管理.svg")
         },
         {
           name: "产品管理",
-          imgpath:"./src/render/assets/navi-icon/产品管理.svg"
+          imgpath:require("@/render/assets/navi-icon/产品管理.svg")
         },
         {
           name: "动作管理",
-          imgpath:"./src/render/assets/navi-icon/动作管理.svg"
+          imgpath:require("@/render/assets/navi-icon/动作管理.svg")
         },
         {
           name: "审计管理",
-          imgpath:"./src/render/assets/navi-icon/审计管理.svg"
+          imgpath:require("@/render/assets/navi-icon/审计管理.svg")
         },
         {
           name: "人员管理",
-          imgpath:"./src/render/assets/navi-icon/人员管理.svg"
+          imgpath:require("@/render/assets/navi-icon/人员管理.svg")
         },
         {
           name: "系统设置",
-          imgpath:"./src/render/assets/navi-icon/系统设置.svg"
+          imgpath:require("@/render/assets/navi-icon/系统设置.svg")
         }
       ]
     }
   },
   components:{
-    menumodel
+
   }
 }
 </script>
