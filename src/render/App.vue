@@ -6,12 +6,9 @@
           <img src="@/render/assets/user.jpg">
         </div>
         <div class="menubar">
-          <div class="menumodel">
-            <img src="@/render/assets/用户管理.png">
-          </div>
-          <div class="menumodel">
-            <img src="@/render/assets/工时计算.png">
-          </div>
+          
+          <menumodel v-for="model in modules" :key="model.name" :imgpath="model.imgpath"></menumodel>
+
         </div>
       </div>
       <div class="views">
@@ -49,10 +46,11 @@ body {
 }
 
 .navibar {
-  background-color: rgba(gray, 0.05);
+  background-color: #eeeeee;
   display: flex;
   flex-flow: column nowrap;
   flex-basis: 12.8rem;
+  color: #7f7f7f;
 
   .usericon {
     height: 8rem;
@@ -87,12 +85,12 @@ body {
       }
     }
 
-    .menumodel:hover img{
+    .menumodel:hover img {
       animation-name: modelhover;
       animation-duration: 0.1s;
       // animation-iteration-count: infinite;
       animation-timing-function: ease-out;
-      animation-fill-mode:forwards;
+      animation-fill-mode: forwards;
     }
   }
 
@@ -107,20 +105,61 @@ body {
 }
 
 .views {
-  background-color: rebeccapurple;
+  background-color: #9400FF;
   flex-grow: 1;
   flex-basis: 16rem;
 }
 
 @keyframes modelhover {
   0% {
-    transform: scale(1) translate(0,0);
+    transform: scale(1) translate(0, 0);
     background-color: aqua;
   }
 
   100% {
-    transform: scale(2.3) translate(-25%,-25%);
+    transform: scale(2.3) translate(-25%, -25%);
     background-color: aqua;
   }
 }
 </style>
+
+<script>
+import menumodel from './compoents/menumodel.vue';
+
+export default {
+  data() {
+    return {
+      modules: [
+        {
+          name: "用户管理",
+          imgpath:"./src/render/assets/navi-icon/用户管理.svg"
+        },
+        {
+          name: "产品管理",
+          imgpath:"./src/render/assets/navi-icon/产品管理.svg"
+        },
+        {
+          name: "动作管理",
+          imgpath:"./src/render/assets/navi-icon/动作管理.svg"
+        },
+        {
+          name: "审计管理",
+          imgpath:"./src/render/assets/navi-icon/审计管理.svg"
+        },
+        {
+          name: "人员管理",
+          imgpath:"./src/render/assets/navi-icon/人员管理.svg"
+        },
+        {
+          name: "系统设置",
+          imgpath:"./src/render/assets/navi-icon/系统设置.svg"
+        }
+      ]
+    }
+  },
+  components:{
+    menumodel
+  }
+}
+</script>
+
