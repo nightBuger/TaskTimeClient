@@ -3,13 +3,15 @@
     <div class="container">
       <div class="navibar">
         <div class="usericon">
-          <img src="@/render/assets/user.jpg">
+          <img src="@/render/assets/user.jpg" class="usericonimg">
         </div>
         <div class="menubar">
           <ul>
             <li v-for="(mod,index) in modules" :key="index" class="menumodel">
-              <img :src=mod.imgpath>
-              <p>{{ mod.name }}</p>
+              <div class="naviitme">
+                <img class="naviiconimg" :src=mod.imgpath>
+                <p>{{ mod.name }}</p>
+              </div>
             </li>
           </ul>
         </div>
@@ -69,44 +71,49 @@ body {
     // background-color: aqua;
     flex-grow: 1;
     position: relative;
-    display: flex;
-    flex-flow: column nowrap;
-
+    // display: flex;
+    // flex-flow: column nowrap;
+    // justify-content: space-between;
+    // align-content: center;
     .menumodel {
-      max-height: 6.4rem;
-      min-height: 6.4rem;
+
+      // height: 10rem;
       max-width: 100%;
       display: flex;
       flex-flow: column nowrap;
-
-      // background-color: aqua;
-      img {
-        max-height: 25%;
-        max-width: 25%;
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-25%, -25%);
-      }
-    }
-
-    .menumodel:hover img {
-      animation-name: modelhover;
-      animation-duration: 0.1s;
-      // animation-iteration-count: infinite;
-      animation-timing-function: ease-out;
-      animation-fill-mode: forwards;
+      position: relative;
+      border: #000000 solid 1px;
     }
   }
-
-  img {
+}
+.menubar ul{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+.usericonimg {
     max-height: 50%;
     max-width: 50%;
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+}
+.naviiconimg {
+  max-height: 40%;
+  max-width: 40%;
+  background-color: aqua;
+  // position: relative;
+  // top: 25%;
+  // left: 25%;
+}
+.menumodel p{
+  // background-color: #9400FF;
+  text-align: center;
+}
+.naviitem{
+  display: block;
+  height: 10rem;
 }
 
 .views {
