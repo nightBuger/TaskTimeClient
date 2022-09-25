@@ -8,8 +8,10 @@
         <div class="menubar">
           <ul>
             <li v-for="(mod,index) in modules" :key="index" class="menumodel">
-              <div class="naviitme">
-                <img class="naviiconimg" :src=mod.imgpath>
+              <div class="naviitem">
+                <!-- <img class="naviiconimg" :src=mod.imgpath> -->
+                <!-- <i class="iconfont" :class=mod.fontname ></i> -->
+                <iconfontVue></iconfontVue>
                 <p>{{ mod.name }}</p>
               </div>
             </li>
@@ -71,6 +73,7 @@ body {
     // background-color: aqua;
     flex-grow: 1;
     position: relative;
+
     // display: flex;
     // flex-flow: column nowrap;
     // justify-content: space-between;
@@ -82,38 +85,53 @@ body {
       display: flex;
       flex-flow: column nowrap;
       position: relative;
-      border: #000000 solid 1px;
+      // border: #000000 solid 1px;
     }
   }
 }
-.menubar ul{
+
+.menubar ul {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
+  height: 100%;
+  justify-content: flex-start;
+  // background-color: #000000;
 }
+
 .usericonimg {
-    max-height: 50%;
-    max-width: 50%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  max-height: 50%;
+  max-width: 50%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
 .naviiconimg {
-  max-height: 40%;
-  max-width: 40%;
-  background-color: aqua;
-  // position: relative;
+  height: 50%;
+  width: 50%;
+  // color: aqua;
+  // background-color: aqua;
+  // position: absolute;
   // top: 25%;
   // left: 25%;
 }
-.menumodel p{
+
+.naviitem {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+  width: 100%;
+  margin: 0.2rem;
+}
+.menumodel p {
   // background-color: #9400FF;
   text-align: center;
-}
-.naviitem{
-  display: block;
-  height: 10rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
 }
 
 .views {
@@ -125,40 +143,40 @@ body {
 </style>
 
 <script>
-
+import iconfontVue from '@/render/components/iconfont.vue';
 export default {
   data() {
     return {
       modules: [
         {
           name: "用户管理",
-          imgpath:require("@/render/assets/navi-icon/用户管理.svg")
+          fontname:"iconfont icon-yonghuguanli"
         },
         {
           name: "产品管理",
-          imgpath:require("@/render/assets/navi-icon/产品管理.svg")
+          fontname:"iconfont icon-chanpinguanli"
         },
         {
           name: "动作管理",
-          imgpath:require("@/render/assets/navi-icon/动作管理.svg")
+          fontname:"iconfont icon-dongzuoguanli"
         },
         {
           name: "审计管理",
-          imgpath:require("@/render/assets/navi-icon/审计管理.svg")
+          fontname:"iconfont icon-shenjiguanli"
         },
         {
           name: "人员管理",
-          imgpath:require("@/render/assets/navi-icon/人员管理.svg")
+          fontname:"iconfont icon-renyuanguanli"
         },
         {
           name: "系统设置",
-          imgpath:require("@/render/assets/navi-icon/系统设置.svg")
+          fontname:"iconfont icon-xitongshezhi"
         }
       ]
     }
   },
   components:{
-
+    iconfontVue
   }
 }
 </script>
