@@ -10,8 +10,8 @@
             <li v-for="(mod,index) in modules" :key="index" class="menumodel">
               <div class="naviitem">
                 <!-- <img class="naviiconimg" :src=mod.imgpath> -->
-                <!-- <i class="iconfont" :class=mod.fontname ></i> -->
-                <iconfontVue></iconfontVue>
+                <i class="iconfont" :class=mod.fontname ></i>
+                <!-- <iconfontVue></iconfontVue> -->
                 <p>{{ mod.name }}</p>
               </div>
             </li>
@@ -71,9 +71,9 @@ body {
 
   .menubar {
     // background-color: aqua;
-    flex-grow: 1;
+    // flex-grow: 1;
     position: relative;
-
+    width:16rem;
     // display: flex;
     // flex-flow: column nowrap;
     // justify-content: space-between;
@@ -110,11 +110,6 @@ body {
 .naviiconimg {
   height: 50%;
   width: 50%;
-  // color: aqua;
-  // background-color: aqua;
-  // position: absolute;
-  // top: 25%;
-  // left: 25%;
 }
 
 .naviitem {
@@ -126,14 +121,33 @@ body {
   width: 100%;
   margin: 0.2rem;
 }
+.naviitem:active{
+  background: -webkit-linear-gradient(left,#15DCEA ,#538CFA);
+  .iconfont{
+    background: white;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+.naviitem:hover{
+  border-radius: 1.2rem;
+  transform: translate(-2px);
+  // background: -webkit-linear-gradient(left,#15DCEA ,#538CFA);
+  background-color: rgba($color: gray, $alpha: 0.2)
+}
 .menumodel p {
-  // background-color: #9400FF;
-  text-align: center;
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 0.2rem;
 }
-
+.iconfont{
+  font-size: 3.6rem !important;
+  background: -webkit-linear-gradient(left ,#15DCEA ,#538CFA );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .views {
   background-color: #9400FF;
   flex-grow: 1;
@@ -143,7 +157,6 @@ body {
 </style>
 
 <script>
-import iconfontVue from '@/render/components/iconfont.vue';
 export default {
   data() {
     return {
@@ -176,7 +189,7 @@ export default {
     }
   },
   components:{
-    iconfontVue
+
   }
 }
 </script>
