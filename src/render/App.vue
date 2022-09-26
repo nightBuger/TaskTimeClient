@@ -7,10 +7,11 @@
         </div>
         <div class="menubar">
           <ul>
-            <li v-for="(mod,index) in modules" :key="index" class="menumodel">
+            <li v-for="(mod,index) in modules" :key="'modules'+index" class="menumodel" :class="menuClass(index)" @click="changeNavi(index)">
               <div class="naviitem">
                 <!-- <img class="naviiconimg" :src=mod.imgpath> -->
-                <i class="iconfont" :class=mod.fontname ></i>
+                <!-- activeitem选中状态 mod.fontname各自选项的icon样式-->
+                <i class="iconfont" :class="mod.fontname"></i>
                 <!-- <iconfontVue></iconfontVue> -->
                 <p>{{ mod.name }}</p>
               </div>
@@ -79,7 +80,7 @@ body {
     // justify-content: space-between;
     // align-content: center;
     .menumodel {
-
+      border-radius: 1.2rem;
       // height: 10rem;
       max-width: 100%;
       display: flex;
@@ -121,20 +122,15 @@ body {
   width: 100%;
   margin: 0.2rem;
 }
-.naviitem:active{
-  background: -webkit-linear-gradient(left,#15DCEA ,#538CFA);
-  .iconfont{
-    background: white;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
+
 .naviitem:hover{
   border-radius: 1.2rem;
   transform: translate(-2px);
   // background: -webkit-linear-gradient(left,#15DCEA ,#538CFA);
-  background-color: rgba($color: gray, $alpha: 0.2)
+  background-color: rgba($color: gray, $alpha: 0.2);
+  // p {
+  //   font-size: 0;
+  // }
 }
 .menumodel p {
   font-size: 1.3rem;
@@ -148,10 +144,31 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.activeitem{
+  background: -webkit-linear-gradient(left,#15DCEA ,#538CFA);
+  border-radius: 1.2rem;
+  .iconfont{
+    background: white;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  p {
+    color:white;
+  }
+}
 .views {
   background-color: #9400FF;
   flex-grow: 1;
   flex-basis: 16rem;
+}
+@keyframes navi_hover_icon {
+  0%{
+    
+  }
+  100%{
+    font-size:0;
+  }
 }
 
 </style>
@@ -160,36 +177,57 @@ body {
 export default {
   data() {
     return {
+      selectIndex:0,
       modules: [
         {
           name: "用户管理",
-          fontname:"iconfont icon-yonghuguanli"
+          fontname:"icon-yonghuguanli",
+          active:true
         },
         {
           name: "产品管理",
-          fontname:"iconfont icon-chanpinguanli"
+          fontname:"icon-chanpinguanli",
+          active:false
         },
         {
           name: "动作管理",
-          fontname:"iconfont icon-dongzuoguanli"
+          fontname:"icon-dongzuoguanli",
+          active:false
         },
         {
           name: "审计管理",
-          fontname:"iconfont icon-shenjiguanli"
+          fontname:"icon-shenjiguanli",
+          active:false
         },
         {
           name: "人员管理",
-          fontname:"iconfont icon-renyuanguanli"
+          fontname:"icon-renyuanguanli",
+          active:false
         },
         {
           name: "系统设置",
-          fontname:"iconfont icon-xitongshezhi"
+          fontname:"icon-xitongshezhi",
+          active:false
         }
       ]
     }
   },
   components:{
 
+  },
+  methods:{
+    changeNavi(index) {
+      this.selectIndex=index;
+    },
+    menuClass(index){
+      let sty = {
+        'activeitem':false
+      }
+      if (index === this.selectIndex){
+        sty['activeitem'] = true;
+      } 
+      return sty;
+    }
   }
 }
 </script>
