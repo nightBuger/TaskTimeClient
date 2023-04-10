@@ -176,6 +176,11 @@ a:focus {
     font-size:0;
   }
 }
+.views {
+  // background-color: #9400FF;
+  flex-grow: 1;
+  flex-basis: 16rem;
+}
 
 </style>
 

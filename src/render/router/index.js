@@ -33,7 +33,11 @@ const routes = [
     path:"/systemconfig",
     name:"系统设置",
     component:() => import('../views/systemconfig.vue')
-  }
+  },
+  {
+    path: '/',
+    component: () => import("../views/userview.vue")
+  },
 ]
 
 const router = new VueRouter({
