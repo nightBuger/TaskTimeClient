@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="views">
-
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -158,17 +158,9 @@ body {
   }
 }
 .views {
-  background-color: #9400FF;
+  // background-color: #9400FF;
   flex-grow: 1;
   flex-basis: 16rem;
-}
-@keyframes navi_hover_icon {
-  0%{
-    
-  }
-  100%{
-    font-size:0;
-  }
 }
 
 </style>

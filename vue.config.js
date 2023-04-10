@@ -10,5 +10,12 @@ module.exports = defineConfig({
     index:{
       entry:'src/render/main.js'
     }
+  },
+  devServer:{
+    proxy:{
+      "/api":{
+        target:"http://49.232.172.159"
+      }
+    }
   }
 })
