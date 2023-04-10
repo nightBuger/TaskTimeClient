@@ -7,12 +7,9 @@
         </div>
         <div class="menubar">
           <ul>
-            <li v-for="(mod,index) in modules" :key="'modules'+index" class="menumodel" :class="menuClass(index)" @click="changeNavi(index)">
+            <li v-for="(mod,index) in modules" :key="'modules'+index" class="menumodel" :class="menuClass(index)" @click="changeNavi(index,mod)">
               <div class="naviitem">
-                <!-- <img class="naviiconimg" :src=mod.imgpath> -->
-                <!-- activeitem选中状态 mod.fontname各自选项的icon样式-->
                 <i class="iconfont" :class="mod.fontname"></i>
-                <!-- <iconfontVue></iconfontVue> -->
                 <p>{{ mod.name }}</p>
               </div>
             </li>
@@ -20,7 +17,7 @@
         </div>
       </div>
       <div class="views">
-
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -132,6 +129,19 @@ body {
   //   font-size: 0;
   // }
 }
+a,
+a:hover,
+a:active,
+a:visited,
+a:link,
+a:focus {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    background: none;
+    text-decoration: none;
+    color:none;
+}
 .menumodel p {
   font-size: 1.3rem;
   font-weight: 600;
@@ -157,14 +167,10 @@ body {
     color:white;
   }
 }
-.views {
-  background-color: #9400FF;
-  flex-grow: 1;
-  flex-basis: 16rem;
-}
+
 @keyframes navi_hover_icon {
   0%{
-    
+
   }
   100%{
     font-size:0;
@@ -182,32 +188,38 @@ export default {
         {
           name: "用户管理",
           fontname:"icon-yonghuguanli",
-          active:true
+          active:true,
+          to:"/usermanager"
         },
         {
           name: "产品管理",
           fontname:"icon-chanpinguanli",
-          active:false
+          active:false,
+          to:"/productmanager"
         },
         {
           name: "动作管理",
           fontname:"icon-dongzuoguanli",
-          active:false
+          active:false,
+          to:"/actmanager"
         },
         {
           name: "审计管理",
           fontname:"icon-shenjiguanli",
-          active:false
+          active:false,
+          to:"/auditmanager"
         },
         {
           name: "人员管理",
           fontname:"icon-renyuanguanli",
-          active:false
+          active:false,
+          to:"/staffmanager"
         },
         {
           name: "系统设置",
           fontname:"icon-xitongshezhi",
-          active:false
+          active:false,
+          to:"/systemconfig"
         }
       ]
     }
@@ -216,8 +228,9 @@ export default {
 
   },
   methods:{
-    changeNavi(index) {
+    changeNavi(index,mod) {
       this.selectIndex=index;
+      this.$router.replace(mod.to)
     },
     menuClass(index){
       let sty = {
@@ -225,7 +238,7 @@ export default {
       }
       if (index === this.selectIndex){
         sty['activeitem'] = true;
-      } 
+      }
       return sty;
     }
   }
